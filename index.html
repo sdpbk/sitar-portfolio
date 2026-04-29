@@ -40,24 +40,6 @@ pointer-events: none;
 overflow: hidden;
 }
 
-.mn {
-position: absolute;
-bottom: -8%;
-color: #B8860B;
-font-family: ‘Cormorant Garamond’, serif;
-opacity: 0;
-animation: note-rise linear infinite;
-will-change: transform, opacity;
-user-select: none;
-}
-
-@keyframes note-rise {
-0%   { transform: translateY(0)        translateX(0)         rotate(var(–rs)); opacity: 0; }
-8%   { opacity: var(–op); }
-88%  { opacity: var(–op); }
-100% { transform: translateY(-108vh)   translateX(var(–dx)) rotate(var(–re)); opacity: 0; }
-}
-
 /* Content sits above notes */
 header, main, footer { position: relative; z-index: 1; }
 
@@ -304,40 +286,7 @@ text-align: center;
 </head>
 <body>
 
-<div id="notes-bg" aria-hidden="true">
-<span class="mn" style="left:63.4%;font-size:0.79rem;animation-duration:57.0s;animation-delay:-18.0s;--op:0.092;--rs:6.4deg;--re:15.8deg;--dx:-25.0px">♩</span>
-<span class="mn" style="left:42.5%;font-size:0.8rem;animation-duration:55.0s;animation-delay:-40.0s;--op:0.042;--rs:-10.8deg;--re:-7.2deg;--dx:3.0px">♪</span>
-<span class="mn" style="left:23.2%;font-size:1.72rem;animation-duration:81.0s;animation-delay:-1.0s;--op:0.096;--rs:7.1deg;--re:3.3deg;--dx:-21.0px">♫</span>
-<span class="mn" style="left:93.9%;font-size:1.31rem;animation-duration:49.0s;animation-delay:-8.0s;--op:0.099;--rs:3.7deg;--re:11.1deg;--dx:14.0px">♬</span>
-<span class="mn" style="left:53.5%;font-size:2.36rem;animation-duration:62.0s;animation-delay:-44.0s;--op:0.098;--rs:4.3deg;--re:13.0deg;--dx:5.0px">♩</span>
-<span class="mn" style="left:69.6%;font-size:0.83rem;animation-duration:55.0s;animation-delay:-23.0s;--op:0.046;--rs:-9.6deg;--re:-19.2deg;--dx:-13.0px">♪</span>
-<span class="mn" style="left:63.0%;font-size:1.35rem;animation-duration:62.0s;animation-delay:-17.0s;--op:0.059;--rs:15.7deg;--re:19.3deg;--dx:7.0px">♫</span>
-<span class="mn" style="left:18.4%;font-size:1.95rem;animation-duration:52.0s;animation-delay:-30.0s;--op:0.109;--rs:5.0deg;--re:6.4deg;--dx:11.0px">♬</span>
-<span class="mn" style="left:82.9%;font-size:2.03rem;animation-duration:55.0s;animation-delay:-3.0s;--op:0.062;--rs:-8.4deg;--re:-15.3deg;--dx:27.0px">♩</span>
-<span class="mn" style="left:86.1%;font-size:1.27rem;animation-duration:74.0s;animation-delay:-32.0s;--op:0.104;--rs:-1.5deg;--re:-7.1deg;--dx:-15.0px">♪</span>
-<span class="mn" style="left:55.9%;font-size:1.18rem;animation-duration:71.0s;animation-delay:-72.0s;--op:0.068;--rs:-10.1deg;--re:1.8deg;--dx:1.0px">♫</span>
-<span class="mn" style="left:10.7%;font-size:0.83rem;animation-duration:50.0s;animation-delay:-50.0s;--op:0.095;--rs:-2.8deg;--re:-13.3deg;--dx:-7.0px">♬</span>
-<span class="mn" style="left:97.6%;font-size:1.62rem;animation-duration:89.0s;animation-delay:-69.0s;--op:0.041;--rs:7.9deg;--re:12.3deg;--dx:2.0px">♩</span>
-<span class="mn" style="left:27.6%;font-size:1.81rem;animation-duration:50.0s;animation-delay:-35.0s;--op:0.072;--rs:16.3deg;--re:25.3deg;--dx:-14.0px">♪</span>
-<span class="mn" style="left:50.1%;font-size:1.04rem;animation-duration:86.0s;animation-delay:-70.0s;--op:0.061;--rs:5.0deg;--re:7.6deg;--dx:-21.0px">♫</span>
-<span class="mn" style="left:75.2%;font-size:1.64rem;animation-duration:80.0s;animation-delay:-42.0s;--op:0.04;--rs:-6.3deg;--re:-17.8deg;--dx:26.0px">♬</span>
-<span class="mn" style="left:86.4%;font-size:2.12rem;animation-duration:59.0s;animation-delay:-5.0s;--op:0.101;--rs:16.1deg;--re:6.2deg;--dx:-1.0px">♩</span>
-<span class="mn" style="left:8.6%;font-size:2.0rem;animation-duration:79.0s;animation-delay:-10.0s;--op:0.073;--rs:1.8deg;--re:-3.8deg;--dx:22.0px">♪</span>
-<span class="mn" style="left:42.6%;font-size:1.1rem;animation-duration:69.0s;animation-delay:-58.0s;--op:0.054;--rs:-6.8deg;--re:5.1deg;--dx:9.0px">♫</span>
-<span class="mn" style="left:44.1%;font-size:1.6rem;animation-duration:50.0s;animation-delay:-18.0s;--op:0.064;--rs:3.2deg;--re:-3.3deg;--dx:-17.0px">♬</span>
-<span class="mn" style="left:8.8%;font-size:1.79rem;animation-duration:55.0s;animation-delay:-72.0s;--op:0.1;--rs:-15.4deg;--re:-21.7deg;--dx:10.0px">♩</span>
-<span class="mn" style="left:22.6%;font-size:0.97rem;animation-duration:87.0s;animation-delay:-46.0s;--op:0.073;--rs:10.2deg;--re:17.6deg;--dx:-19.0px">♪</span>
-<span class="mn" style="left:11.3%;font-size:1.46rem;animation-duration:64.0s;animation-delay:-37.0s;--op:0.091;--rs:6.2deg;--re:17.8deg;--dx:-24.0px">♫</span>
-<span class="mn" style="left:40.7%;font-size:1.31rem;animation-duration:84.0s;animation-delay:-20.0s;--op:0.053;--rs:-1.8deg;--re:-3.7deg;--dx:-13.0px">♬</span>
-<span class="mn" style="left:26.0%;font-size:2.27rem;animation-duration:65.0s;animation-delay:-69.0s;--op:0.079;--rs:-16.2deg;--re:-4.2deg;--dx:20.0px">♩</span>
-<span class="mn" style="left:95.0%;font-size:2.28rem;animation-duration:83.0s;animation-delay:-13.0s;--op:0.074;--rs:-10.3deg;--re:-12.7deg;--dx:-26.0px">♪</span>
-<span class="mn" style="left:38.4%;font-size:2.38rem;animation-duration:57.0s;animation-delay:-63.0s;--op:0.072;--rs:-2.8deg;--re:8.2deg;--dx:30.0px">♫</span>
-<span class="mn" style="left:55.4%;font-size:1.94rem;animation-duration:52.0s;animation-delay:-24.0s;--op:0.108;--rs:2.9deg;--re:3.9deg;--dx:15.0px">♬</span>
-<span class="mn" style="left:7.5%;font-size:1.71rem;animation-duration:68.0s;animation-delay:-68.0s;--op:0.051;--rs:16.6deg;--re:6.5deg;--dx:-19.0px">♩</span>
-<span class="mn" style="left:59.1%;font-size:1.86rem;animation-duration:56.0s;animation-delay:-10.0s;--op:0.102;--rs:-9.1deg;--re:-6.8deg;--dx:7.0px">♪</span>
-<span class="mn" style="left:42.2%;font-size:1.71rem;animation-duration:69.0s;animation-delay:-75.0s;--op:0.054;--rs:7.8deg;--re:1.5deg;--dx:-6.0px">♫</span>
-<span class="mn" style="left:66.5%;font-size:1.24rem;animation-duration:59.0s;animation-delay:-60.0s;--op:0.045;--rs:-1.5deg;--re:10.5deg;--dx:30.0px">♬</span>
-</div>
+<div id="notes-bg" aria-hidden="true"></div>
 
 <header>
   <span class="header-eyebrow">Imdadkhani Gharana · Gayaki Ang</span>
@@ -430,6 +379,75 @@ text-align: center;
   <span class="footer-name">Sudeep — Sitar</span>
   <span class="footer-ornament">◆ ◆ ◆</span>
 </footer>
+
+<script>
+(function(){
+  var bg = document.getElementById('notes-bg');
+  var chars = ['♩','♪','♫','♬'];
+  var notes = [
+    ['♩',63.4,0.79,57,-17,0.092,6.4,15.8,-24],
+    ['♪',42.5,0.8,54,-40,0.042,-10.8,-7.2,2],
+    ['♫',23.2,1.72,81,0,0.096,7.1,3.3,-20],
+    ['♬',93.9,1.31,49,-7,0.099,3.7,11.1,13],
+    ['♩',53.5,2.36,62,-44,0.098,4.3,13.0,4],
+    ['♪',69.6,0.83,55,-23,0.046,-9.6,-19.2,-13],
+    ['♫',63.0,1.35,61,-16,0.059,15.7,19.3,6],
+    ['♬',18.4,1.95,52,-30,0.109,5.0,6.4,11],
+    ['♩',82.9,2.03,55,-2,0.062,-8.4,-15.3,26],
+    ['♪',86.1,1.27,74,-31,0.104,-1.5,-7.1,-15],
+    ['♫',55.9,1.18,71,-71,0.068,-10.1,1.8,0],
+    ['♬',10.7,0.83,49,-50,0.095,-2.8,-13.3,-7],
+    ['♩',97.6,1.62,88,-68,0.041,7.9,12.3,2],
+    ['♪',27.6,1.81,50,-34,0.072,16.3,25.3,-14],
+    ['♫',50.1,1.04,86,-69,0.061,5.0,7.6,-20],
+    ['♬',75.2,1.64,80,-42,0.04,-6.3,-17.8,25],
+    ['♩',86.4,2.12,58,-4,0.101,16.1,6.2,0],
+    ['♪',8.6,2.0,79,-10,0.073,1.8,-3.8,22],
+    ['♫',42.6,1.1,69,-58,0.054,-6.8,5.1,8],
+    ['♬',44.1,1.6,50,-17,0.064,3.2,-3.3,-16],
+    ['♩',8.8,1.79,55,-72,0.1,-15.4,-21.7,10],
+    ['♪',22.6,0.97,87,-45,0.073,10.2,17.6,-18],
+    ['♫',11.3,1.46,64,-37,0.091,6.2,17.8,-24],
+    ['♬',40.7,1.31,83,-19,0.053,-1.8,-3.7,-13],
+    ['♩',26.0,2.27,64,-68,0.079,-16.2,-4.2,20],
+    ['♪',95.0,2.28,83,-13,0.074,-10.3,-12.7,-26],
+    ['♫',38.4,2.38,56,-62,0.072,-2.8,8.2,29],
+    ['♬',55.4,1.94,51,-23,0.108,2.9,3.9,14],
+    ['♩',7.5,1.71,67,-68,0.051,16.6,6.5,-18],
+    ['♪',59.1,1.86,55,-9,0.102,-9.1,-6.8,7],
+    ['♫',42.2,1.71,68,-74,0.054,7.8,1.5,-6],
+    ['♬',66.5,1.24,59,-60,0.045,-1.5,10.5,29],
+  ];
+  var styleEl = document.createElement('style');
+  var css = '';
+  notes.forEach(function(n, i){
+    var char=n[0],left=n[1],size=n[2],dur=n[3],delay=n[4],op=n[5],rs=n[6],re=n[7],dx=n[8];
+    var kf = 'nr'+i;
+    css += '@keyframes '+kf+' {';
+    css += '0%{transform:translateY(0) translateX(0) rotate('+rs+'deg);opacity:0;}';
+    css += '8%{opacity:'+op+';}';
+    css += '88%{opacity:'+op+';}';
+    css += '100%{transform:translateY(-110vh) translateX('+dx+'px) rotate('+re+'deg);opacity:0;}';
+    css += '}';
+    var span = document.createElement('span');
+    span.textContent = char;
+    span.style.cssText = [
+      'position:absolute',
+      'bottom:-8%',
+      'left:'+left+'%',
+      'font-size:'+size+'rem',
+      'color:#B8860B',
+      "font-family:'Cormorant Garamond',serif",
+      'animation:'+kf+' '+dur+'s linear '+delay+'s infinite',
+      'pointer-events:none',
+      'user-select:none'
+    ].join(';');
+    bg.appendChild(span);
+  });
+  styleEl.textContent = css;
+  document.head.appendChild(styleEl);
+})();
+</script>
 
 </body>
 </html>
