@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,275 +17,274 @@
     --white:       #181410;
   }
 
-- { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
 
-body {
-font-family: ‘Libre Franklin’, sans-serif;
-background-color: var(–bg);
-background-image:
-radial-gradient(ellipse 100% 60% at 20% 0%,  rgba(40,28,10,0.9) 0%, transparent 70%),
-radial-gradient(ellipse 60% 50% at 90% 100%, rgba(30,20,8,0.7)  0%, transparent 60%);
-color: var(–text);
-line-height: 1.7;
-font-weight: 300;
-overflow-x: hidden;
-position: relative;
-}
+  body {
+    font-family: 'Libre Franklin', sans-serif;
+    background-color: var(--bg);
+    background-image:
+      radial-gradient(ellipse 100% 60% at 20% 0%,  rgba(40,28,10,0.9) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 50% at 90% 100%, rgba(30,20,8,0.7)  0%, transparent 60%);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+    position: relative;
+  }
 
-/* === FLOATING MUSICAL NOTES === */
-#notes-bg {
-position: fixed;
-inset: 0;
-z-index: 0;
-pointer-events: none;
-overflow: hidden;
-user-select: none;
-}
+  /* === FLOATING MUSICAL NOTES === */
+  #notes-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    user-select: none;
+  }
 
-/* Content sits above notes */
-header, main, footer { position: relative; z-index: 1; }
+  /* Content sits above notes */
+  header, main, footer { position: relative; z-index: 1; }
 
-/* === COMPACT HEADER === */
-header {
-padding: 4rem 2rem 3rem;
-max-width: 960px;
-margin: 0 auto;
-display: flex;
-flex-direction: column;
-gap: 0.5rem;
-border-bottom: 1px solid var(–divider);
-}
+  /* === COMPACT HEADER === */
+  header {
+    padding: 4rem 2rem 3rem;
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid var(--divider);
+  }
 
-.header-eyebrow {
-font-size: 0.65rem;
-font-weight: 500;
-letter-spacing: 0.4em;
-text-transform: uppercase;
-color: var(–accent);
-}
+  .header-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
 
-.header-name {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(2.8rem, 7vw, 5rem);
-font-weight: 300;
-letter-spacing: 0.06em;
-line-height: 1;
-}
+  .header-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
 
-.header-sub {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.1rem;
-font-style: italic;
-font-weight: 300;
-color: var(–text-soft);
-letter-spacing: 0.15em;
-}
+  .header-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--text-soft);
+    letter-spacing: 0.15em;
+  }
 
-/* === MAIN LAYOUT === */
-main {
-max-width: 960px;
-margin: 0 auto;
-padding: 0 2rem;
-}
+  /* === MAIN LAYOUT === */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
 
-section {
-padding: 3.5rem 0;
-border-bottom: 1px solid var(–divider);
-}
+  section {
+    padding: 3.5rem 0;
+    border-bottom: 1px solid var(--divider);
+  }
 
-section:last-child { border-bottom: none; }
+  section:last-child { border-bottom: none; }
 
-.section-label {
-font-size: 0.62rem;
-font-weight: 500;
-letter-spacing: 0.45em;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 2rem;
-}
+  .section-label {
+    font-size: 0.62rem;
+    font-weight: 500;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+  }
 
-/* === ABOUT: TWO-COLUMN === */
-.about-grid {
-display: grid;
-grid-template-columns: 320px 1fr;
-gap: 3rem;
-align-items: start;
-}
+  /* === ABOUT: TWO-COLUMN === */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
 
-.about-photo {
-width: 100%;
-aspect-ratio: 3/4;
-object-fit: cover;
-object-position: top center;
-display: block;
-border: 1px solid var(–divider);
-}
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    border: 1px solid var(--divider);
+  }
 
-.about-text p {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(1.15rem, 1.8vw, 1.4rem);
-font-weight: 400;
-line-height: 1.9;
-color: var(–text);
-margin-bottom: 1.25rem;
-}
+  .about-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+    font-weight: 400;
+    line-height: 1.9;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+  }
 
-.about-text p:last-child { margin-bottom: 0; }
+  .about-text p:last-child { margin-bottom: 0; }
 
-.about-text em {
-font-style: italic;
-color: var(–accent);
-}
+  .about-text em {
+    font-style: italic;
+    color: var(--accent);
+  }
 
-.about-meta {
-margin-top: 2rem;
-display: flex;
-flex-direction: column;
-gap: 0.6rem;
-}
+  .about-meta {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
 
-.about-meta-row {
-display: flex;
-align-items: baseline;
-gap: 0.75rem;
-}
+  .about-meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
 
-.about-meta-label {
-font-size: 0.6rem;
-font-weight: 500;
-letter-spacing: 0.3em;
-text-transform: uppercase;
-color: var(–text-soft);
-min-width: 70px;
-}
+  .about-meta-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    min-width: 70px;
+  }
 
-.about-meta-value {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.05rem;
-font-weight: 500;
-}
+  .about-meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+  }
 
-/* === VIDEO === */
-.video-wrap {
-max-width: 340px;
-margin: 0 auto;
-}
+  /* === VIDEO === */
+  .video-wrap {
+    max-width: 340px;
+    margin: 0 auto;
+  }
 
-.video-embed {
-position: relative;
-width: 100%;
-padding-bottom: 177.78%;
-background: var(–bg-deep);
-overflow: hidden;
-border: 1px solid var(–divider);
-}
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.78%;
+    background: var(--bg-deep);
+    overflow: hidden;
+    border: 1px solid var(--divider);
+  }
 
-.video-embed iframe {
-position: absolute;
-top: 0; left: 0;
-width: 100%; height: 100%;
-border: none;
-}
+  .video-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
 
-.video-caption {
-margin-top: 1rem;
-text-align: center;
-}
+  .video-caption {
+    margin-top: 1rem;
+    text-align: center;
+  }
 
-.video-caption h3 {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.2rem;
-font-weight: 500;
-}
+  .video-caption h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
 
-.video-caption p {
-font-size: 0.82rem;
-color: var(–text-soft);
-margin-top: 0.2rem;
-}
+  .video-caption p {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    margin-top: 0.2rem;
+  }
 
-/* === LINEAGE === */
-.lineage-list {
-list-style: none;
-display: flex;
-flex-direction: column;
-gap: 2rem;
-}
+  /* === LINEAGE === */
+  .lineage-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
 
-.lineage-item {
-display: grid;
-grid-template-columns: 1fr;
-gap: 0.35rem;
-}
+  .lineage-item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
 
-.lineage-item h3 {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1.15rem;
-font-weight: 600;
-display: flex;
-align-items: center;
-gap: 0.75rem;
-}
+  .lineage-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
 
-.lineage-item h3::before {
-content: ‘’;
-display: inline-block;
-width: 20px;
-height: 1px;
-background: var(–accent);
-flex-shrink: 0;
-}
+  .lineage-item h3::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
 
-.lineage-item p {
-font-size: 0.9rem;
-color: var(–text-soft);
-line-height: 1.7;
-padding-left: 32px;
-}
+  .lineage-item p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.7;
+    padding-left: 32px;
+  }
 
-/* === FOOTER === */
-footer {
-max-width: 960px;
-margin: 0 auto;
-padding: 3rem 2rem;
-display: flex;
-align-items: center;
-justify-content: space-between;
-}
+  /* === FOOTER === */
+  footer {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-.footer-name {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 1rem;
-font-weight: 300;
-letter-spacing: 0.1em;
-color: var(–text-soft);
-}
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--text-soft);
+  }
 
-.footer-ornament {
-color: var(–accent);
-font-size: 0.8rem;
-letter-spacing: 0.6em;
-}
+  .footer-ornament {
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 0.6em;
+  }
 
-/* === RESPONSIVE === */
-@media (max-width: 680px) {
-.about-grid {
-grid-template-columns: 1fr;
-}
-.about-photo {
-max-width: 280px;
-aspect-ratio: 1/1;
-object-position: top center;
-}
-footer {
-flex-direction: column;
-gap: 1rem;
-text-align: center;
-}
-}
+  /* === RESPONSIVE === */
+  @media (max-width: 680px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    .about-photo {
+      max-width: 280px;
+      aspect-ratio: 1/1;
+      object-position: top center;
+    }
+    footer {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
 </style>
-
 </head>
 <body>
 
@@ -310,7 +308,6 @@ text-align: center;
 <main>
 
   <!-- ABOUT -->
-
   <section>
     <div class="section-label">About</div>
     <div class="about-grid">
@@ -348,7 +345,6 @@ text-align: center;
   </section>
 
   <!-- PERFORMANCE -->
-
   <section>
     <div class="section-label">Performance</div>
     <div class="video-wrap">
@@ -363,7 +359,6 @@ text-align: center;
   </section>
 
   <!-- LINEAGE -->
-
   <section>
     <div class="section-label">Lineage & Background</div>
     <ul class="lineage-list">
@@ -392,6 +387,7 @@ text-align: center;
   <span class="footer-name">Sudeep — Sitar</span>
   <span class="footer-ornament">◆ ◆ ◆</span>
 </footer>
+
 
 </body>
 </html>
