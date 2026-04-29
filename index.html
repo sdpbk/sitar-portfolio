@@ -36,7 +36,7 @@ position: relative;
 
 /* === FLOATING MUSICAL NOTES === */
 #notes-bg {
-position: absolute;
+position: fixed;
 inset: 0;
 z-index: 0;
 pointer-events: none;
@@ -291,25 +291,14 @@ text-align: center;
 <body>
 
 <div id="notes-bg" aria-hidden="true">
-  <!-- Bottom-left cluster -->
-  <span style="position:absolute;left:2%;bottom:4%;font-size:3.2rem;color:#D4A84B;opacity:0.07;font-family:'Cormorant Garamond',serif;transform:rotate(-12deg);filter:blur(1px)">♫</span>
-  <span style="position:absolute;left:6%;bottom:12%;font-size:1.6rem;color:#D4A84B;opacity:0.05;font-family:'Cormorant Garamond',serif;transform:rotate(8deg);filter:blur(0.8px)">♩</span>
-  <span style="position:absolute;left:1%;bottom:22%;font-size:2.1rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(-5deg);filter:blur(1px)">♪</span>
-
-  <!-- Bottom-right cluster -->
-
-<span style="position:absolute;right:2%;bottom:5%;font-size:2.8rem;color:#D4A84B;opacity:0.07;font-family:'Cormorant Garamond',serif;transform:rotate(10deg);filter:blur(1px)">♬</span>
-<span style="position:absolute;right:7%;bottom:14%;font-size:1.4rem;color:#D4A84B;opacity:0.05;font-family:'Cormorant Garamond',serif;transform:rotate(-8deg);filter:blur(0.8px)">♫</span>
-<span style="position:absolute;right:1.5%;bottom:25%;font-size:1.9rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(15deg);filter:blur(1px)">♩</span>
-
-  <!-- Far left edge, mid-page -->
-
-<span style="position:absolute;left:0.5%;top:38%;font-size:2.4rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(-18deg);filter:blur(1.2px)">♪</span>
-
-  <!-- Far right edge, mid-page -->
-
-<span style="position:absolute;right:0.5%;top:55%;font-size:2rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(12deg);filter:blur(1.2px)">♬</span>
-
+  <!-- Bottom-left -->
+  <span style="position:fixed;left:1.5%;bottom:8%;font-size:4rem;color:#D4A84B;opacity:0.12;font-family:'Cormorant Garamond',serif;transform:rotate(-14deg);filter:blur(1px);line-height:1">♫</span>
+  <span style="position:fixed;left:4%;bottom:18%;font-size:2rem;color:#D4A84B;opacity:0.08;font-family:'Cormorant Garamond',serif;transform:rotate(7deg);filter:blur(0.8px);line-height:1">♩</span>
+  <span style="position:fixed;left:0.8%;bottom:30%;font-size:1.5rem;color:#D4A84B;opacity:0.06;font-family:'Cormorant Garamond',serif;transform:rotate(-6deg);filter:blur(1px);line-height:1">♪</span>
+  <!-- Bottom-right -->
+  <span style="position:fixed;right:1.5%;bottom:8%;font-size:3.5rem;color:#D4A84B;opacity:0.12;font-family:'Cormorant Garamond',serif;transform:rotate(12deg);filter:blur(1px);line-height:1">♬</span>
+  <span style="position:fixed;right:4%;bottom:19%;font-size:1.8rem;color:#D4A84B;opacity:0.08;font-family:'Cormorant Garamond',serif;transform:rotate(-9deg);filter:blur(0.8px);line-height:1">♫</span>
+  <span style="position:fixed;right:1%;bottom:32%;font-size:1.4rem;color:#D4A84B;opacity:0.06;font-family:'Cormorant Garamond',serif;transform:rotate(16deg);filter:blur(1px);line-height:1">♩</span>
 </div>
 
 <header>
