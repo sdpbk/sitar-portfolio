@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sudeep — Sitar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F7F3EE;
+    --bg-deep: #EDE6DB;
+    --text: #2A2118;
+    --text-soft: #6B5D4F;
+    --accent: #B8860B;
+    --accent-muted: #D4A84B;
+    --accent-glow: rgba(184, 134, 11, 0.12);
+    --divider: #D6CEC3;
+    --white: #FFFDF9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Libre Franklin', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* === GRAIN OVERLAY === */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* === HEADER === */
+  header {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px; height: 380px;
+    border: 1px solid var(--divider);
+    border-radius: 50%;
+    opacity: 0;
+    animation: circleReveal 2s ease-out 0.5s forwards;
+  }
+
+  header::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px; height: 280px;
+    border: 1px solid var(--divider);
+    border-radius: 50%;
+    opacity: 0;
+    animation: circleReveal 2s ease-out 0.8s forwards;
+  }
+
+  @keyframes circleReveal {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    to { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
+  }
+
+  .header-ornament {
+    font-size: 1.4rem;
+    color: var(--accent);
+    letter-spacing: 1em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.3s forwards;
+  }
+
+  .header-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.5s forwards;
+  }
+
+  .header-instrument {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--text-soft);
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    margin-top: 1rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.7s forwards;
+  }
+
+  .header-tradition {
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-top: 2.5rem;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 0.9s forwards;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1.2s ease-out 1.4s forwards;
+  }
+
+  .scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: var(--accent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* === SECTIONS === */
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--divider);
+  }
+
+  /* === BIO === */
+  .bio-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+    font-weight: 400;
+    line-height: 1.85;
+    color: var(--text);
+    max-width: 720px;
+  }
+
+  .bio-text em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .bio-details {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .bio-detail {
+    padding: 1.5rem;
+    background: var(--white);
+    border: 1px solid var(--divider);
+    border-radius: 2px;
+  }
+
+  .bio-detail-label {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  .bio-detail-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  /* === DIVIDER === */
+  .section-divider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-divider hr {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--divider), transparent);
+  }
+
+  /* === PERFORMANCES / VIDEOS === */
+  .video-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .video-card {
+    background: var(--white);
+    border: 1px solid var(--divider);
+    overflow: hidden;
+    transition: box-shadow 0.4s ease;
+  }
+
+  .video-card:hover {
+    box-shadow: 0 8px 40px rgba(42, 33, 24, 0.08);
+  }
+
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    background: var(--bg-deep);
+    overflow: hidden;
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* Placeholder state */
+  .video-placeholder {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background:
+      linear-gradient(135deg, var(--bg-deep) 0%, #E8DFD2 100%);
+  }
+
+  /* Vertical video (YouTube Shorts) */
+  .video-card--vertical {
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .video-embed--vertical {
+    padding-bottom: 177.78%; /* 9:16 aspect ratio */
+  }
+
+  .placeholder-icon {
+    width: 56px; height: 56px;
+    border: 2px solid var(--accent-muted);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+  }
+
+  .placeholder-icon svg {
+    width: 20px; height: 20px;
+    margin-left: 3px;
+  }
+
+  .placeholder-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  .video-info {
+    padding: 1.5rem 2rem;
+  }
+
+  .video-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 0.35rem;
+  }
+
+  .video-meta {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* === TRAINING === */
+  .training-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .training-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: baseline;
+  }
+
+  .training-marker {
+    width: 6px; height: 6px;
+    min-width: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-top: 0.65rem;
+  }
+
+  .training-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+  }
+
+  .training-content p {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  /* === FOOTER === */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--divider);
+  }
+
+  footer p {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    color: var(--text-soft);
+    text-transform: uppercase;
+  }
+
+  .footer-ornament {
+    color: var(--accent);
+    font-size: 1.2rem;
+    letter-spacing: 0.6em;
+    margin-bottom: 1rem;
+  }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 600px) {
+    section { padding: 3.5rem 1.5rem; }
+    .video-info { padding: 1.2rem 1.5rem; }
+    .bio-details { grid-template-columns: 1fr; }
+    header::before { width: 260px; height: 260px; }
+    header::after { width: 180px; height: 180px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-ornament">◆ ◆ ◆</div>
+    <h1 class="header-name">Sudeep</h1>
+    <p class="header-instrument">sitar</p>
+    <p class="header-tradition">North Indian Classical Music</p>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- BIO -->
+  <section>
+    <div class="section-label"><span>About</span></div>
+    <p class="bio-text">
+      A practitioner of the sitar rooted in the <em>khayal</em> tradition of North Indian classical music. Trained in the art of <em>raga</em> and <em>tala</em>, exploring the meditative depth and improvisatory freedom that define Hindustani music — from slow, contemplative <em>alaap</em> to rhythmically intricate compositions.
+    </p>
+    <p class="bio-text" style="margin-top: 1.25rem;">
+      Based in New York City, drawing connections between the microtonal expressiveness of the sitar and the harmonic traditions of Western classical music.
+    </p>
+
+    <div class="bio-details">
+      <div class="bio-detail">
+        <div class="bio-detail-label">Instrument</div>
+        <div class="bio-detail-value">Sitar</div>
+      </div>
+      <div class="bio-detail">
+        <div class="bio-detail-label">Tradition</div>
+        <div class="bio-detail-value">Hindustani (Khayal)</div>
+      </div>
+      <div class="bio-detail">
+        <div class="bio-detail-label">Based In</div>
+        <div class="bio-detail-value">New York City</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"><hr></div>
+
+  <!-- PERFORMANCES -->
+  <section>
+    <div class="section-label"><span>Performance</span></div>
+    <div class="video-grid">
+
+      <div class="video-card video-card--vertical">
+        <div class="video-embed video-embed--vertical">
+          <iframe src="https://www.youtube.com/embed/ZWVtFhlA9cg" allowfullscreen></iframe>
+        </div>
+        <div class="video-info">
+          <h3 class="video-title">Raga Yaman</h3>
+          <p class="video-meta">North Indian Classical — Sitar</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-divider"><hr></div>
+
+  <!-- TRAINING -->
+  <section>
+    <div class="section-label"><span>Training & Background</span></div>
+    <ul class="training-list">
+      <li class="training-item">
+        <div class="training-marker"></div>
+        <div class="training-content">
+          <h3>Sitar — Hindustani Classical</h3>
+          <p>Years of study in the khayal tradition, developing fluency in raga exposition, rhythmic improvisation, and the ornamental vocabulary of the sitar including meend, gamak, and zamzama.</p>
+        </div>
+      </li>
+      <li class="training-item">
+        <div class="training-marker"></div>
+        <div class="training-content">
+          <h3>Raga & Tala Framework</h3>
+          <p>Deep grounding in the melodic and rhythmic systems of North Indian music — raga as a living, modal architecture and tala as a cyclic framework for improvisation.</p>
+        </div>
+      </li>
+      <li class="training-item">
+        <div class="training-marker"></div>
+        <div class="training-content">
+          <h3>Cross-Tradition Engagement</h3>
+          <p>Active listener and student of Western classical music and opera, exploring structural parallels between Hindustani improvisation and Western forms such as sonata, counterpoint, and cadenza.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-ornament">◆</div>
+    <p>Sudeep — Sitar — New York City</p>
+  </footer>
+
+</body>
+</html>
