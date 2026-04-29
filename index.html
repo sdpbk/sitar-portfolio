@@ -8,14 +8,14 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Libre+Franklin:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #F7F3EE;
-    --bg-deep: #EDE6DB;
-    --text: #2A2118;
-    --text-soft: #6B5D4F;
-    --accent: #B8860B;
-    --accent-muted: #D4A84B;
-    --divider: #D6CEC3;
-    --white: #FFFDF9;
+    --bg:          #0E0B07;
+    --bg-deep:     #1A1510;
+    --text:        #EDE0CC;
+    --text-soft:   #8A7A68;
+    --accent:      #D4A84B;
+    --accent-muted:#B8860B;
+    --divider:     rgba(255,255,255,0.08);
+    --white:       #181410;
   }
 
 - { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,7 +23,10 @@
 
 body {
 font-family: ‘Libre Franklin’, sans-serif;
-background: var(–bg);
+background-color: var(–bg);
+background-image:
+radial-gradient(ellipse 100% 60% at 20% 0%,  rgba(40,28,10,0.9) 0%, transparent 70%),
+radial-gradient(ellipse 60% 50% at 90% 100%, rgba(30,20,8,0.7)  0%, transparent 60%);
 color: var(–text);
 line-height: 1.7;
 font-weight: 300;
@@ -33,11 +36,12 @@ position: relative;
 
 /* === FLOATING MUSICAL NOTES === */
 #notes-bg {
-position: fixed;
+position: absolute;
 inset: 0;
 z-index: 0;
 pointer-events: none;
 overflow: hidden;
+user-select: none;
 }
 
 /* Content sits above notes */
@@ -286,7 +290,27 @@ text-align: center;
 </head>
 <body>
 
-<div id="notes-bg" aria-hidden="true"></div>
+<div id="notes-bg" aria-hidden="true">
+  <!-- Bottom-left cluster -->
+  <span style="position:absolute;left:2%;bottom:4%;font-size:3.2rem;color:#D4A84B;opacity:0.07;font-family:'Cormorant Garamond',serif;transform:rotate(-12deg);filter:blur(1px)">♫</span>
+  <span style="position:absolute;left:6%;bottom:12%;font-size:1.6rem;color:#D4A84B;opacity:0.05;font-family:'Cormorant Garamond',serif;transform:rotate(8deg);filter:blur(0.8px)">♩</span>
+  <span style="position:absolute;left:1%;bottom:22%;font-size:2.1rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(-5deg);filter:blur(1px)">♪</span>
+
+  <!-- Bottom-right cluster -->
+
+<span style="position:absolute;right:2%;bottom:5%;font-size:2.8rem;color:#D4A84B;opacity:0.07;font-family:'Cormorant Garamond',serif;transform:rotate(10deg);filter:blur(1px)">♬</span>
+<span style="position:absolute;right:7%;bottom:14%;font-size:1.4rem;color:#D4A84B;opacity:0.05;font-family:'Cormorant Garamond',serif;transform:rotate(-8deg);filter:blur(0.8px)">♫</span>
+<span style="position:absolute;right:1.5%;bottom:25%;font-size:1.9rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(15deg);filter:blur(1px)">♩</span>
+
+  <!-- Far left edge, mid-page -->
+
+<span style="position:absolute;left:0.5%;top:38%;font-size:2.4rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(-18deg);filter:blur(1.2px)">♪</span>
+
+  <!-- Far right edge, mid-page -->
+
+<span style="position:absolute;right:0.5%;top:55%;font-size:2rem;color:#D4A84B;opacity:0.04;font-family:'Cormorant Garamond',serif;transform:rotate(12deg);filter:blur(1.2px)">♬</span>
+
+</div>
 
 <header>
   <span class="header-eyebrow">Imdadkhani Gharana · Gayaki Ang</span>
@@ -379,75 +403,6 @@ text-align: center;
   <span class="footer-name">Sudeep — Sitar</span>
   <span class="footer-ornament">◆ ◆ ◆</span>
 </footer>
-
-<script>
-(function(){
-  var bg = document.getElementById('notes-bg');
-  var chars = ['♩','♪','♫','♬'];
-  var notes = [
-    ['♩',63.4,0.79,57,-17,0.092,6.4,15.8,-24],
-    ['♪',42.5,0.8,54,-40,0.042,-10.8,-7.2,2],
-    ['♫',23.2,1.72,81,0,0.096,7.1,3.3,-20],
-    ['♬',93.9,1.31,49,-7,0.099,3.7,11.1,13],
-    ['♩',53.5,2.36,62,-44,0.098,4.3,13.0,4],
-    ['♪',69.6,0.83,55,-23,0.046,-9.6,-19.2,-13],
-    ['♫',63.0,1.35,61,-16,0.059,15.7,19.3,6],
-    ['♬',18.4,1.95,52,-30,0.109,5.0,6.4,11],
-    ['♩',82.9,2.03,55,-2,0.062,-8.4,-15.3,26],
-    ['♪',86.1,1.27,74,-31,0.104,-1.5,-7.1,-15],
-    ['♫',55.9,1.18,71,-71,0.068,-10.1,1.8,0],
-    ['♬',10.7,0.83,49,-50,0.095,-2.8,-13.3,-7],
-    ['♩',97.6,1.62,88,-68,0.041,7.9,12.3,2],
-    ['♪',27.6,1.81,50,-34,0.072,16.3,25.3,-14],
-    ['♫',50.1,1.04,86,-69,0.061,5.0,7.6,-20],
-    ['♬',75.2,1.64,80,-42,0.04,-6.3,-17.8,25],
-    ['♩',86.4,2.12,58,-4,0.101,16.1,6.2,0],
-    ['♪',8.6,2.0,79,-10,0.073,1.8,-3.8,22],
-    ['♫',42.6,1.1,69,-58,0.054,-6.8,5.1,8],
-    ['♬',44.1,1.6,50,-17,0.064,3.2,-3.3,-16],
-    ['♩',8.8,1.79,55,-72,0.1,-15.4,-21.7,10],
-    ['♪',22.6,0.97,87,-45,0.073,10.2,17.6,-18],
-    ['♫',11.3,1.46,64,-37,0.091,6.2,17.8,-24],
-    ['♬',40.7,1.31,83,-19,0.053,-1.8,-3.7,-13],
-    ['♩',26.0,2.27,64,-68,0.079,-16.2,-4.2,20],
-    ['♪',95.0,2.28,83,-13,0.074,-10.3,-12.7,-26],
-    ['♫',38.4,2.38,56,-62,0.072,-2.8,8.2,29],
-    ['♬',55.4,1.94,51,-23,0.108,2.9,3.9,14],
-    ['♩',7.5,1.71,67,-68,0.051,16.6,6.5,-18],
-    ['♪',59.1,1.86,55,-9,0.102,-9.1,-6.8,7],
-    ['♫',42.2,1.71,68,-74,0.054,7.8,1.5,-6],
-    ['♬',66.5,1.24,59,-60,0.045,-1.5,10.5,29],
-  ];
-  var styleEl = document.createElement('style');
-  var css = '';
-  notes.forEach(function(n, i){
-    var char=n[0],left=n[1],size=n[2],dur=n[3],delay=n[4],op=n[5],rs=n[6],re=n[7],dx=n[8];
-    var kf = 'nr'+i;
-    css += '@keyframes '+kf+' {';
-    css += '0%{transform:translateY(0) translateX(0) rotate('+rs+'deg);opacity:0;}';
-    css += '8%{opacity:'+op+';}';
-    css += '88%{opacity:'+op+';}';
-    css += '100%{transform:translateY(-110vh) translateX('+dx+'px) rotate('+re+'deg);opacity:0;}';
-    css += '}';
-    var span = document.createElement('span');
-    span.textContent = char;
-    span.style.cssText = [
-      'position:absolute',
-      'bottom:-8%',
-      'left:'+left+'%',
-      'font-size:'+size+'rem',
-      'color:#B8860B',
-      "font-family:'Cormorant Garamond',serif",
-      'animation:'+kf+' '+dur+'s linear '+delay+'s infinite',
-      'pointer-events:none',
-      'user-select:none'
-    ].join(';');
-    bg.appendChild(span);
-  });
-  styleEl.textContent = css;
-  document.head.appendChild(styleEl);
-})();
-</script>
 
 </body>
 </html>
